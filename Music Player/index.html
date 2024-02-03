@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music player</title>
+
+    <link href="style.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <script src="https://kit.fontawesome.com/181426d246.js" crossorigin="anonymous"></script>
+
+    </head>
+<body>
+    <nav>
+        <ul>
+            <li class="brand"><img src="./Logo.png">ListenUp</li>
+            <li>Home</li>
+            <li></li>
+        </ul>
+    </nav>
+    
+
+    <div class="container">
+        <div class="songlist">
+            <h1>Best of Today - Listen And Enjoy</h1>
+            <div class="songListBlock">
+                <div class="songItem">
+                    <img  alt="cover image">
+                    <span class="songName">Song Name</span>
+                    <span class="sanglistTime"><span class="timestamp">05:34<i id="0" class="fa-solid fa-play songplay"></i></span></span>
+                </div>
+                <div class="songItem">
+                    <img  alt="cover image">
+                    <span class="songName">Song Name</span>
+                    <span class="sanglistTime"><span class="timestamp">05:34<i id="1" class="fa-solid fa-play songplay"></i></span></span>
+                </div>
+                <div class="songItem">
+                    <img  alt="cover image">
+                    <span class="songName">Song Name</span>
+                    <span class="sanglistTime"><span class="timestamp">05:34<i id="2" class="fa-solid fa-play songplay"></i></span></span>
+                </div>
+                <div class="songItem">
+                    <img  alt="cover image">
+                    <span class="songName">Song Name</span>
+                    <span class="sanglistTime"><span class="timestamp">05:34<i id="3" class="fa-solid fa-play songplay"></i></span></span>
+                </div>
+                <div class="songItem">
+                    <img  alt="cover image">
+                    <span class="songName">Song Name</span>
+                    <span class="sanglistTime"><span class="timestamp">05:34<i id="4" class="fa-solid fa-play songplay"></i></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="songbanner"></div>
+    </div>
+    <div class="bottom">
+        <input type="range" name="range" id="progremm_bar" min="0" value="0" max="100">
+        <div class="icons">
+            <!-- icons -->
+            <ion-icon class="play-icon previous" name="play-skip-back" id="mainPrevious"></ion-icon>
+            <ion-icon class="play-icon play" name="play" id="MainPlay"></ion-icon>
+            <ion-icon class="play-icon pause hide" name="pause" id="MainPause"></ion-icon>
+            <ion-icon class="play-icon next" name="play-skip-forward" id="mainNext"></ion-icon>
+        </div>
+        <div class="singInfo">
+             <img src="./gif.gif" width="43px" alt="music graph" id="SongGIF"><span id="mainSongName">Tabla-Santoor Instrumental</span>
+        </div>
+    </div>
+
+</body>
+</html>

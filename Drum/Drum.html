@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    html{
+        font-size: 62.5%;
+        background-size: cover;
+        font-family: sans-serif;
+    }
+    body{
+        background-image: linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%);
+        font-size: 3rem;
+    }
+    .key{
+        display: flex;
+        margin: 1rem;
+        padding: .5rem;
+        font-size:3rem;
+        flex-direction: column;
+        row-gap: .5rem;
+        /* column-gap: 2rem; */
+        margin-right: 3rem;
+        align-items: center;
+        border: 3px solid black;
+        border-radius: 1rem;
+        transition: all 0.07s;
+        /* border: 1rem; */
+    }
+    .keys{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        min-height: 100vh; 
+        align-items: center;
+        justify-content: center;
+        /* to get the content in the centre of the view height. */
+    }
+    .playing{
+        transform: scale(1.1);
+        border :5px solid yellow;
+        font-size: 3.5rem;
+        color: white;
+        /* padding: 1.5rem; */
+    }
+</style>
+
+    <title>Drum-keys</title>
+</head>
+<body>
+    <section class="keys">
+        <div data-key="65" class="key">
+            <kbd>A</kbd>
+            <span class="sound">Clap</span>
+        </div>
+        <div data-key="83" class="key">
+            <kbd>S</kbd>
+            <span class="sound">HitHat</span>
+        </div>
+        <div data-key="68" class="key">
+            <kbd>D</kbd>
+            <span class="sound">Kick</span>
+        </div>
+        <div data-key="70" class="key">
+            <kbd>F</kbd>
+            <span class="sound">OpenHat</span>
+        </div>
+        <div data-key="71" class="key">
+            <kbd>G</kbd>
+            <span class="sound">Boom</span>
+        </div>
+        <div data-key="72" class="key">
+            <kbd>H</kbd>
+            <span class="sound">Ride</span>
+        </div>
+        <div data-key="74" class="key">
+            <kbd>J</kbd>
+            <span class="sound">Snare</span>
+        </div>
+        <div data-key="75" class="key">
+            <kbd>K</kbd>
+            <span class="sound">Tom</span>
+        </div>
+        <div data-key="76" class="key">
+            <kbd>L</kbd>
+            <span class="sound">Tink</span>
+        </div>        
+    </section>
+    <audio data-key="65" src="sounds/clap.wav"></audio>
+    <audio data-key="83" src="sounds/hihat.wav"></audio>
+    <audio data-key="68" src="sounds/kick.wav"></audio>
+    <audio data-key="70" src="sounds/openhat.wav"></audio>
+    <audio data-key="71" src="sounds/boom.wav"></audio>
+    <audio data-key="72" src="sounds/ride.wav"></audio>
+    <audio data-key="74" src="sounds/snare.wav"></audio>
+    <audio data-key="75" src="sounds/tom.wav"></audio>
+    <audio data-key="76" src="sounds/tink.wav"></audio>
+   
+    <script>
+        function removeTransition(e) {     //create a function to remove transition at the event(e).
+          if (e.propertyName !== 'transform') return;
+          this.classList.remove('playing');
+        }
+      
+        function playSound(e) {
+          const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);    //const var audio use query data-key of event keycode.
+          const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+          if (!audio) return;     //if we use wrong input then function returns nothing.
+      
+          key.classList.add('playing');
+          audio.currentTime = 0;    //to rewind to start.without this the sound will play only once at a time.
+            //we have to wait for the sound to end to use it again.
+          audio.play();    //play the audio.
+        }
+      
+        const keys = Array.from(document.querySelectorAll('.key'));    //created a variable key and selected all query of key at once.
+        keys.forEach(key => key.addEventListener('transitionend', removeTransition));    //to add event in all without looping.
+        // when the transition ends we will go to the function remove Transition
+        window.addEventListener('keydown', playSound);     //while on window listen the event key down and perform funtion event.
+      </script>
+</body>
+</html>
